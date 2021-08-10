@@ -23,7 +23,7 @@ jobs:
            aws s3 cp test1$app_version.zip s3://saiteju1997/builds/test1/
     - name: Send email notification.
       run: |      
-           unified_version=`cat version-release.json`
+           unified_version=`cat VERSION`
            python3 scripts/send_email.py "GitHub Actions Build is ${{ job.status }} for ${{ github.repository }}" "steju480@gmail.com" "m.sandhyarani03@gmail.com" "  Hi,
            
                This  mail is to confirm that your build is ${{ job.status }} for ${{ github.repository }},

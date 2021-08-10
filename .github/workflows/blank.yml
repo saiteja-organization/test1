@@ -26,7 +26,7 @@ jobs:
            pip3 install setuptools
            pip3 install boto3
            unified_version=`cat VERSION`
-           python3 scripts/send_email.py "GitHub Actions Build is ${{ job.status }} for ${{ github.repository }}" "steju480@gmail.com" "m.sandhyarani03@gmail.com" "  Hi,
+           python3 scripts/send_email.py "GitHub Actions Build is ${{ job.status }} for ${{ github.repository }}" "steju480@gmail.com" "m.sandhyarani03@gmail.com|||steju480@gmail.com" "  Hi,
            
                This  mail is to confirm that your build is ${{ job.status }} for ${{ github.repository }},
                The below repositories are updated:

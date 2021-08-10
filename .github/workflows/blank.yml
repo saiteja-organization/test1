@@ -22,7 +22,9 @@ jobs:
            zip -r test1$app_version.zip .
            aws s3 cp test1$app_version.zip s3://saiteju1997/builds/test1/
     - name: Send email notification.
-      run: |      
+      run: |  
+           pip3 install setuptools
+           pip3 install boto3
            unified_version=`cat VERSION`
            python3 scripts/send_email.py "GitHub Actions Build is ${{ job.status }} for ${{ github.repository }}" "steju480@gmail.com" "m.sandhyarani03@gmail.com" "  Hi,
            

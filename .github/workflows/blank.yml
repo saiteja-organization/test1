@@ -19,30 +19,5 @@ jobs:
     - name: Copy zip file to S3 Bucket.
       run: |
            app_version=`cat VERSION`
-           zip -r test1$app_version.zip .
-           aws s3 cp test1$app_version.zip s3://saiteju1997/builds/test1/
-    - name: Send email notification.
-      run: |  
-           pip3 install setuptools
-           pip3 install boto3
-           unified_version=`cat VERSION`
-           python3 scripts/send_email.py "GitHub Actions Build is ${{ job.status }} for ${{ github.repository }}" "steju480@gmail.com" "m.sandhyarani03@gmail.com|||steju480@gmail.com" "  Hi,
-           
-               This  mail is to confirm that your build is ${{ job.status }} for ${{ github.repository }},
-               The below repositories are updated:
-               
-               $unified_version
-               
-               
-           
-           
-           
-           Warm Regards,
-           OTA Team.
-           
-           
-           
-           
-           
-           " ${{secrets.AWS_ACCESS_KEY_ID}} ${{secrets.AWS_SECRET_ACCESS_KEY}}
-           
+           zip -r test1-v$app_version.zip .
+           aws s3 cp test1-v$app_version.zip s3://saiteju1997/builds/test1/

@@ -19,7 +19,6 @@ jobs:
            git config --global user.email "steju480@gmail.com"
            git config --global user.name "Saiteju1997"
            git checkout -b release-v2021.3.10.18
-           git pull
            echo "`date +%H.%M.%S`" > VERSION
            git add .
            git commit -m "Update version file"

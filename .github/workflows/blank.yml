@@ -21,3 +21,6 @@ jobs:
            app_version=`cat VERSION`
            zip -r test1-v$app_version.zip .
            aws s3 cp test1-v$app_version.zip s3://saiteju1997/builds/test1/
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+

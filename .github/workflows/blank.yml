@@ -16,6 +16,8 @@ jobs:
         aws-region: us-west-2    
     - name: Copy zip file to S3 Bucket.
       run: |
+           git config --global user.email "steju480@gmail.com"
+           git config --global user.name "Saiteju1997"
            git checkout -b release-v2021.3.08.17
            echo "`date +%H.%M.%S`" > VERSION
            git add .

@@ -16,6 +16,11 @@ jobs:
         aws-region: us-west-2    
     - name: Copy zip file to S3 Bucket.
       run: |
+           git checkout -b release-v2021.3.08.17
+           echo "`date +%H.%M.%S`" > VERSION
+           git add .
+           git commit -m "Update version file"
+           git push origin release-v2021.3.08.17
            app_version=`cat VERSION`
            zip -r test1-v$app_version.zip .
            aws s3 cp test1-v$app_version.zip s3://saiteju1997/builds/test1/
@@ -23,7 +28,7 @@ jobs:
       uses: peter-evans/create-pull-request@v3
       with:
           commit-message: update authors
-          title: Update AUTHORS
+          title: Update VERSION file
           body: Credit new contributors by updating AUTHORS
-          branch: update-authors
+          branch: release-v2021.3.08.17
 

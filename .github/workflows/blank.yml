@@ -18,19 +18,14 @@ jobs:
       run: |
            git config --global user.email "steju480@gmail.com"
            git config --global user.name "Saiteju1997"
-           git checkout -b release-v2021.3.10.18
+           git checkout -b release-v2021.3.10.19
            echo "`date +%H.%M.%S`" > VERSION
            git add .
            git commit -m "Update version file"
-           git push origin release-v2021.3.10.18
+           git push origin release-v2021.3.10.19
            app_version=`cat VERSION`
            zip -r test1-v$app_version.zip .
            aws s3 cp test1-v$app_version.zip s3://saiteju1997/builds/test1/
-           git checkout main
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-          commit-message: update authors
-          title: Update VERSION file
-          body: Credit new contributors by updating AUTHORS
-          branch: release-v2021.3.10.18
+      run: |
+           gh pr create --title "Weekly release" -b "Updated the Version file" -r "Saiteju1997" -B "main" -H "release-v$build_version"

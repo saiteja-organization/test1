@@ -21,10 +21,5 @@ jobs:
            app_version=`cat VERSION`
            zip -r test1-v$app_version.zip .
            aws s3 cp test1-v$app_version.zip s3://saiteju1997/builds/test1/
-    - name: Create Pull request to main branch
-      run: |
-           echo ${{ secrets.GH_TOKEN }} > /tmp/token
-           gh auth login --with-token < /tmp/token
-           gh pr create --title "Weekly release" -b "Updated the Version file" -r "Saiteju1997" -B "main" -H "release-v$branch_version"
 
  

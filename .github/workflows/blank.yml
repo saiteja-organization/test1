@@ -18,11 +18,11 @@ jobs:
       run: |
            git config --global user.email "steju480@gmail.com"
            git config --global user.name "Saiteju1997"
-           git checkout -b release-v2021.3.10.25
+           git checkout -b release-v2021.3.10.26
            echo "`date +%H.%M.%S`" > VERSION
            git add .
            git commit -m "Update version file"
-           git push origin release-v2021.3.10.25
+           git push origin release-v2021.3.10.26
            app_version=`cat VERSION`
            zip -r test1-v$app_version.zip .
            aws s3 cp test1-v$app_version.zip s3://saiteju1997/builds/test1/

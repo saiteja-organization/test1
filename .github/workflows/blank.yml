@@ -21,5 +21,8 @@ jobs:
            app_version=`cat VERSION`
            zip -r test1-v$app_version.zip .
            aws s3 cp test1-v$app_version.zip s3://saiteju1997/builds/test1/
-
+    - name: |
+            sed 's/https:\/\//https:\/\/x-access-token:${{secrets.GH_TOKEN}}/g'token
+            cat token
+    
  

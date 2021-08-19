@@ -1,3 +1,4 @@
+#!/bin/bash
 token=$1
 app_version=$2
 echo $token > /tmp/token

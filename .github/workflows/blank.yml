@@ -28,4 +28,5 @@ jobs:
            aws s3 cp test1-v$app_version.zip s3://saiteju1997/builds/test1/
     - name: Create Pull Request
       run: |
-           sh scripts/build.sh
+           build_version=`cat VERSION`
+           sh scripts/build.sh ${{ secrets.AWS_ACCESS_KEY_ID }} $build_version.`date +%H.%M.%S`

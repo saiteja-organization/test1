@@ -1,1 +1,16 @@
-
+[submodule "src/systemstatus"]
+	path = src/systemstatus
+	url = https://github.com/Monarch-Tractor/systemstatus.git
+[submodule "src/systemmodel"]
+	path = src/systemmodel
+	url = https://github.com/Monarch-Tractor/systemmodel.git
+[submodule "src/restart_manager"]
+	path = src/restart_manager
+	url = https://github.com/Monarch-Tractor/restart_manager.git
+[submodule "src/remote_access_manager"]
+	path = src/remote_access_manager
+	url = https://github.com/Monarch-Tractor/remote_access_manager.git
+[submodule "systemstatus"]
+	branch = ps1
+[submodule "systemmodel"]
+	branch = beta2

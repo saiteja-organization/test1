@@ -1,27 +1,28 @@
-name: CI
+name: Publish GitHub Actions Artifacts Example
+
 on:
   push:
-   
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    branches: [ main ]
 
+jobs:
+       
+  archive-build-artifacts:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2    
-    - name: Copy zip file to S3 Bucket.
-      run: |
-           app_version=`cat VERSION`
-           zip -r test1-v$app_version.zip .
-           aws s3 cp test1-v$app_version.zip s3://saiteju1997/builds/test1/
-    - name: Updating token
-      run: |    
-           sed 's/https:\/\//https:\/\/x-access-token:${{secrets.GH_TOKEN}}/g' token
-           cat token
+
+      - name: Step 1 - Create a temporary artifact downloads folder
+        run: mkdir tej
+        
+      - name: step 2 - Add artifacts to publish to the temp folder
+        run: |
+          cd tej
+          echo 'alpha'    > sai.html
+          echo 'bravo'    > tej.html
+          echo 'charlie'  > saitej.html
+          cd ..
     
- 
+      - name: Step 3 - Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: assets-for-download
+          path: tej

@@ -9,25 +9,8 @@ jobs:
   archive-build-artifacts:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Step 1 - Create a temporary artifact downloads folder
-        run: mkdir tej
-        
-      - name: step 2 - Add artifacts to publish to the temp folder
-        run: |
-          cd tej
-          echo 'alpha'    > sai.html
-          echo 'bravo'    > tej.html
-          echo 'charlie'  > saitej.html
-          cd ..
-    
-      - name: Step 3 - Use the Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v2
-        with: 
-          name: assets-for-download
-          path: tej
       - name: test commands.
         run: |
-             echo "${{ github.event.before }}" 
+             #echo "${{ github.event.before }}" 
              echo "${{ github.event.pull_request.base.sha }}" 
              echo "${{ github.event_name == 'pull_request' }}" 

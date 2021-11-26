@@ -23,7 +23,6 @@ jobs:
              ls -lart
              pwd
              ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-             cat ~/.gitconfig
       - name: "Configure GitHub to use private go modules"
         run: |
              git config --global url."git@github.com:Saiteju1997".insteadOf https://github.com/Saiteju1997

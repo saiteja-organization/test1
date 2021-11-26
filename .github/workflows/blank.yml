@@ -19,5 +19,5 @@ jobs:
     
       - name: "Add github as known host"
         run: |
-             cat .git/config
+             ls -lrt
              ssh-keyscan -H github.com >> ~/.ssh/known_hosts

@@ -9,9 +9,10 @@ jobs:
   archive-build-artifacts:
     runs-on: ubuntu-latest
     steps:
-      - name: test commands.
-        run: |
-             echo "${{ github.event.before }}"
-             echo "${{ github.event.pull_request.base.sha }}" 
-             echo "${{ github.event_name == 'pull_request' }}" 
-           
+      - name: "Install SSH key"
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.TEST_GITHUB_KEY }}
+          known_hosts: 'dummy'
+          name: id_rsa # optional
+          if_key_exists: fail

@@ -16,3 +16,6 @@ jobs:
           known_hosts: 'dummy'
           name: id_rsa # optional
           if_key_exists: fail 
+    
+      - name: "Add github as known host"
+        run: ssh-keyscan -H github.com >> ~/.ssh/known_hosts

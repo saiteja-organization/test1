@@ -39,6 +39,6 @@ jobs:
               ARCH=amd64
               OS=linux
               TAG=$VERSION__$OS_$ARCH
-              echo "Scanning images"
-              echo "$REGISTRY/$PROJECT-$BINS:$TAG"
-
+              for bin in $(BINS); do
+                  echo "$REGISTRY/$PROJECT-$BINS:$TAG"
+               	done

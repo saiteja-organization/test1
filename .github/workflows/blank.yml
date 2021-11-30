@@ -30,5 +30,15 @@ jobs:
       - name: "Build images"
         run: | 
              make container
-             echo $REGISTRY
+      - name: "Lacework inline scanner"
+        run: |
+              PROJECT=testproject
+              REGISTRY=us.gcr.io/test-sample
+              BINS=api
+              VERSION=`git describe --tags --always --dirty`
+              ARCH=amd64
+              OS=linux
+              TAG=$(VERSION)__$(OS)_$(ARCH)
+              echo "Scanning images"
+              echo "$(REGISTRY)/$(PROJECT)-$BINS:$(TAG)"
 

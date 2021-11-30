@@ -34,7 +34,7 @@ jobs:
         run: |
               PROJECT=testproject
               REGISTRY=us.gcr.io/test-sample
-              BINS=api,worker
+              BINS='api,worker'
               VERSION=`git describe --tags --always --dirty`
               ARCH=amd64
               OS=linux

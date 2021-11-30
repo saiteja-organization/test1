@@ -29,3 +29,6 @@ jobs:
              cat ~/.gitconfig
       - name: "Build images"
         run: make container
+      - name: Lacewor inline scan.
+        run: |
+             echo "$(REGISTRY)/$(PROJECT)-$$bin:$(TAG)"

@@ -39,6 +39,6 @@ jobs:
               ARCH=amd64
               OS=linux
               TAG=$VERSION__$OS_$ARCH
-              for bin in $(BINS); do
-                  echo "$REGISTRY/$PROJECT-$BINS:$TAG"
-               	done
+              for bin in "${BINS}"; do
+                  echo "$REGISTRY/$PROJECT-$bin:$TAG"
+              done

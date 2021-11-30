@@ -31,10 +31,9 @@ jobs:
         run: | 
              make container
       - name: "Lacework inline scanner"
-        run: |
+        run: |  
               PROJECT=testproject
               REGISTRY=us.gcr.io/test-sample
-              BINS='api,worker'
               VERSION=`git describe --tags --always --dirty`
               ARCH=amd64
               OS=linux
@@ -42,3 +41,6 @@ jobs:
               for bin in "${BINS}"; do
                   echo "$REGISTRY/$PROJECT-"${bin}":$TAG"
               done
+        env: 
+           BINS: 'api,worker'
+         

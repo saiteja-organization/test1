@@ -32,7 +32,7 @@ jobs:
              make container
       - name: "Lacework inline scanner"
         env: 
-          BINS: api test
+          BINS: api test test1 test2
         run:  |
               PROJECT=testproject
               REGISTRY=us.gcr.io/test-sample
@@ -42,6 +42,9 @@ jobs:
               TAG=$VERSION__$OS_$ARCH
               for bin in $BINS; do
                   echo "$REGISTRY/$PROJECT-$bin:$TAG"
+                  touch "$REGISTRY/$PROJECT-$bin:$TAG"
+                  ls -lrt
+                  pwd
               done
 
          

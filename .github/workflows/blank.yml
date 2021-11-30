@@ -31,9 +31,9 @@ jobs:
         run: | 
              make container
       - name: "Lacework inline scanner"
-        run: |  
         env: 
           BINS: api test
+        run:  |
               PROJECT=testproject
               REGISTRY=us.gcr.io/test-sample
               VERSION=`git describe --tags --always --dirty`

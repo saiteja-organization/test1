@@ -5,9 +5,17 @@ on:
     branches: [ main ]
 
 jobs:
-       
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: testing job.
+        run: |
+             echo "sample"
   archive-build-artifacts:
     runs-on: ubuntu-latest
+    needs: [test]
+    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
       - name: "Install SSH key"
@@ -48,7 +56,6 @@ jobs:
               chmod +x lw-scanner
               for bin in $BINS; do
                   echo "$REGISTRY/$PROJECT-$bin:$TAG"
-                   ./lw-scanner image evaluate $REGISTRY/$PROJECT-$bin $TAG --build-id ${{ github.run_id }}
               done
 
          

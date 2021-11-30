@@ -41,6 +41,5 @@ jobs:
               for bin in "${BINS}"; do
                   echo "$REGISTRY/$PROJECT-"${bin}":$TAG"
               done
-        env: 
-           BINS: 'api,test'
+
          

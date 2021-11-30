@@ -42,5 +42,5 @@ jobs:
                   echo "$REGISTRY/$PROJECT-"${bin}":$TAG"
               done
         env: 
-           BINS: 'api,worker'
+           BINS: 'api,test'
          

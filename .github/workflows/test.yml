@@ -42,9 +42,6 @@ jobs:
               TAG=$VERSION__$OS_$ARCH
               for bin in $BINS; do
                   echo "$REGISTRY/$PROJECT-$bin:$TAG"
-                  echo "$REGISTRY/$PROJECT-$bin:$TAG" >> sample.txt
-                  cat sample.txt
-                  ls -lrt
                   pwd
               done
 

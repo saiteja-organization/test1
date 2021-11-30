@@ -42,7 +42,7 @@ jobs:
               TAG=$VERSION__$OS_$ARCH
               for bin in $BINS; do
                   echo "$REGISTRY/$PROJECT-$bin:$TAG"
-                  touch "$REGISTRY/$PROJECT-$bin:$TAG"
+                  touch $REGISTRY/$PROJECT-$bin:$TAG
                   ls -lrt
                   pwd
               done

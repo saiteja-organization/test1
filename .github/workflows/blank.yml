@@ -28,7 +28,7 @@ jobs:
              git config --global url."git@github.com:Saiteju1997".insteadOf https://github.com/Saiteju1997
              cat ~/.gitconfig
       - name: "Build images"
-        run: make container
-      - name: Lacewor inline scan.
-        run: |
+        run: | 
+             make container
              echo "$(REGISTRY)/$(PROJECT)-$$bin:$(TAG)"
+

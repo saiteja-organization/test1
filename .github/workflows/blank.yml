@@ -40,5 +40,5 @@ jobs:
               OS=linux
               TAG=$VERSION__$OS_$ARCH
               for bin in "${BINS}"; do
-                  echo "$REGISTRY/$PROJECT-$bin:$TAG"
+                  echo "$REGISTRY/$PROJECT-"${bin}":$TAG"
               done

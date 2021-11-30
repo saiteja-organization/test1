@@ -1,5 +1,5 @@
 # Where to push the docker image.
-PROJECT := issuance
+PROJECT := testproject
 REGISTRY ?= us.gcr.io/test-sample
 BINS := api worker
 VERSION ?= $(shell git describe --tags --always --dirty)

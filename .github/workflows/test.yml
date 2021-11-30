@@ -32,7 +32,9 @@ jobs:
              make container
       - name: "Lacework inline scanner"
         env: 
-          BINS: api test test1 test2
+          BINS: api worker
+          LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
+          LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
         run:  |
               PROJECT=testproject
               REGISTRY=us.gcr.io/test-sample
@@ -40,9 +42,13 @@ jobs:
               ARCH=amd64
               OS=linux
               TAG=$VERSION__$OS_$ARCH
+              sudo apt-get update -y
+              sudo apt-get -y install curl
+              curl -L https://github.com/lacework/lacework-vulnerability-scanner/releases/latest/download/lw-scanner-linux-amd64 -o lw-scanner
+              chmod +x lw-scanner
               for bin in $BINS; do
                   echo "$REGISTRY/$PROJECT-$bin:$TAG"
-                  pwd
+                   ./lw-scanner image evaluate $REGISTRY/$PROJECT-$bin $TAG --build-id ${{ github.run_id }}
               done
 
          

@@ -52,6 +52,8 @@ jobs:
               ARCH=amd64
               OS=linux
               TAG=$VERSION__$OS_$ARCH
+              echo $OS
+              echo $TAG
               sudo apt-get update -y
               sudo apt-get -y install curl
               curl -L https://github.com/lacework/lacework-vulnerability-scanner/releases/latest/download/lw-scanner-linux-amd64 -o lw-scanner

@@ -51,7 +51,7 @@ jobs:
               echo $VERSION
               ARCH=amd64
               OS=linux
-              TAG='$VERSION__$OS_$ARCH'
+              TAG="$VERSION__$OS_$ARCH"
               echo $OS
               echo $TAG
               sudo apt-get update -y

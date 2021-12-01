@@ -5,36 +5,11 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: testing job.
-        run: |
-             echo "sample"
   archive-build-artifacts:
     runs-on: ubuntu-latest
-    needs: [test]
-    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v2
-      - name: "Install SSH key"
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.TEST_GITHUB_KEY }}
-          known_hosts: 'dummy'
-          name: id_rsa # optional
-          if_key_exists: fail 
     
-      - name: "Add github as known host"
-        run: |
-             ls -lart
-             pwd
-             ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-      - name: "Configure GitHub to use private go modules"
-        run: |
-             git config --global url."git@github.com:Saiteju1997".insteadOf https://github.com/Saiteju1997
-             cat ~/.gitconfig
       - name: "Build images"
         run: | 
              make container
@@ -51,7 +26,7 @@ jobs:
               echo $VERSION
               ARCH=amd64
               OS=linux
-              TAG="$VERSION__$OS_$ARCH"
+              TAG="${VERSION}__${OS}_${ARCH}"
               echo $OS
               echo $TAG
               sudo apt-get update -y

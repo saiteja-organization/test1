@@ -46,7 +46,9 @@ jobs:
         run:  |
               PROJECT=testproject
               REGISTRY=us.gcr.io/test-sample
+              git describe --tags --always --dirty
               VERSION=`git describe --tags --always --dirty`
+              echo $VERSION
               ARCH=amd64
               OS=linux
               TAG=$VERSION__$OS_$ARCH

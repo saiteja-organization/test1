@@ -22,7 +22,7 @@ jobs:
           REGISTRY:        us.gcr.io/test-sample
           ARCH:            amd64
           OS:              linux
-          TAG:             "${VERSION}__${OS}_${ARCH}"
+          TAG:             "${{ VERSION }}__${{ OS }}_${{ ARCH }}"
         run:  |
               VERSION=`git describe --tags --always --dirty`
               sudo apt-get update -y

@@ -22,9 +22,9 @@ jobs:
           REGISTRY:        us.gcr.io/test-sample
           ARCH:            amd64
           OS:              linux
-          TAG:             "${{ VERSION }}__${{ OS }}_${{ ARCH }}"
         run:  |
               VERSION=`git describe --tags --always --dirty`
+              TAG="${VERSION}__${OS}_${ARCH}"
               sudo apt-get update -y
               sudo apt-get -y install curl
               curl -L https://github.com/lacework/lacework-vulnerability-scanner/releases/latest/download/lw-scanner-linux-amd64 -o lw-scanner

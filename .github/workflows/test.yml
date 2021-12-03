@@ -13,7 +13,7 @@ jobs:
       - name: "Build images"
         run: | 
              make container
-      - name: "Lacework inline scanner"
+      - name: "lw-scanner"
         id: lw-scanner
         env: 
           BINS: api worker

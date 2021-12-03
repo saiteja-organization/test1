@@ -32,5 +32,11 @@ jobs:
               for bin in $BINS; do
                   echo "$REGISTRY/$PROJECT-$bin:$TAG"
               done
+      - name: Check if vulnerabilites were found and step failed.
+        if: steps.lw-scanner.outcome == 'critical'
+        run:  | 
+              echo "Vulnerabilities found and step failed succesfully." && exit 0
+              echo "ls -lart"
+        
 
-         
+

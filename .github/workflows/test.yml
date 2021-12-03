@@ -14,6 +14,7 @@ jobs:
         run: | 
              make container
       - name: "Lacework inline scanner"
+        id: lw-scanner
         env: 
           BINS: api worker
           LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
@@ -31,12 +32,16 @@ jobs:
               chmod +x lw-scanner
               for bin in $BINS; do
                   echo "$REGISTRY/$PROJECT-$bin:$TAG"
+                  echo "failure"
               done
       - name: Check if vulnerabilites were found and step failed.
         if: steps.lw-scanner.outcome == 'failure'
         run:  | 
               echo "Vulnerabilities found and step failed succesfully." && exit 0
+      - name: "test"
+        run:  |
               echo "ls -lart"
+        
         
 
 

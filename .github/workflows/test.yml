@@ -32,7 +32,7 @@ jobs:
               chmod +x lw-scanner
               for bin in $BINS; do
                   echo "$REGISTRY/$PROJECT-$bin:$TAG"
-                  echo "success"
+                  echo "failure"
               done
       - name: Check if vulnerabilites were found and step failed.
         if: steps.lw-scanner.outcome == 'failure'

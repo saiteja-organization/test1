@@ -40,7 +40,7 @@ jobs:
               echo "Vulnerabilities found and step failed succesfully." && exit 0
       - name: "test"
         run:  |
-              echo "ls -lart"
+              echo "build is completed"
         
         
 

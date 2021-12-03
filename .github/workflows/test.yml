@@ -38,6 +38,10 @@ jobs:
         if: steps.lw-scanner.outcome == 1
         run:  | 
               echo "Vulnerabilities found and step failed succesfully." && exit 1
+      - name: fail test
+        run:  |
+              echo "Vulnerabilities found and step failed succesfully."
+              exit 1
       - name: "test"
         run:  |
               echo "build is completed"

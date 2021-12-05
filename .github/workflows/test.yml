@@ -16,7 +16,7 @@ jobs:
              echo "echo 0 test"
              exit 0
              echo "echo 1 test"
-             exit 1
+             exit
              make container
       - name: "lw-scanner"
         id: lw-scanner

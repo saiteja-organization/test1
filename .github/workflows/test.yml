@@ -9,9 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-    
+      - name: test
+        run: this is for testing
       - name: "Build images"
         run: | 
+             echo "echo 0 test"
+             exit 0
+             echo "echo 1 test"
+             exit 1
              make container
       - name: "lw-scanner"
         id: lw-scanner

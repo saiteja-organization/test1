@@ -12,14 +12,14 @@ jobs:
       - name: first job
         run: |
              ls -lrt
-             export LW_SCANNER_EXIT_CODE=$?
+             echo "{LW_SCANNER_EXIT_CODE}=$?" >> $GITHUB_ENV
              echo $LW_SCANNER_EXIT_CODE
       
       - name: testing second job output.
       #  if: ${CRITICAL_VULNS_FOUND} -ge 1 
         run:  |
               echo "${CRITICAL_VULNS_FOUND} critical vulnerabilities found. Exiting with code 1"
-              echo "${ LW_SCANNER_EXIT_CODE }"
+              echo $LW_SCANNER_EXIT_CODE
               ls -lrt
               
 

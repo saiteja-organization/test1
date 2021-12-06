@@ -18,8 +18,12 @@ jobs:
       - name: testing second job output.
       #  if: ${CRITICAL_VULNS_FOUND} -ge 1 
         run:  |
-              echo "${CRITICAL_VULNS_FOUND} critical vulnerabilities found. Exiting with code 1"
-              echo $LW_SCANNER_EXIT_CODE
-              ls -lrt
+          a=10
+          b=10
+          if $a=$b; then
+              echo "success"
+          else
+              echo "failed"
+          fi
               
 

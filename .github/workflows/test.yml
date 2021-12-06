@@ -22,8 +22,6 @@ jobs:
           b=10
           if $a=$b; then
               echo "success"
-          else
-              echo "failed"
           fi
               
 

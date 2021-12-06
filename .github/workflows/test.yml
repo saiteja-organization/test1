@@ -5,6 +5,16 @@ on:
     branches: [ main ]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses:  actions/checkout@v2
+      - name: testing second job output.
+        run:  |
+              mkdir -p sai/tej
+              ls -lrt
+              pwd
+            
   archive-build-artifacts:
     runs-on: ubuntu-latest
     strategy:
@@ -17,7 +27,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-ersion }}
       - name: test
-        run: echo "hello world"
+        run: |
+             ls -lrt
+             pwd
         
 
 

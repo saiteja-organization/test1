@@ -33,7 +33,6 @@ jobs:
              echo $var
       - name: test1
         run:  echo $var
-  
       - name: condition 1
         if: "contains(github.event.head_commit.message, 'CONDITION 1 MSG')"
         run: script for condition 1

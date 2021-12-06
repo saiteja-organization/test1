@@ -19,7 +19,7 @@ jobs:
       #  if: ${CRITICAL_VULNS_FOUND} -ge 1 
         run:  |
               echo "${CRITICAL_VULNS_FOUND} critical vulnerabilities found. Exiting with code 1"
-              echo "${{ LW_SCANNER_EXIT_CODE }}"
+              echo "${ LW_SCANNER_EXIT_CODE }"
               ls -lrt
               
 

@@ -37,9 +37,9 @@ jobs:
       - name: conditional command
         env:
           a: 10
-          b: 20
+          b: 10
         run: |
-             if ${{ env.a }}==${{ env.b }}; then
+             if ${{ env.a }}=${{ env.b }}; then
                     echo "a and b are not equal"
              fi
 

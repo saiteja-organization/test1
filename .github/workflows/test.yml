@@ -13,7 +13,7 @@ jobs:
         run: |
              ls -lrt
              export LW_SCANNER_EXIT_CODE=$?
-             echo $?
+             echo $LW_SCANNER_EXIT_CODE
       
       - name: testing second job output.
       #  if: ${CRITICAL_VULNS_FOUND} -ge 1 

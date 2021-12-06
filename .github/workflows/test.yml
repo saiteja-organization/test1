@@ -33,14 +33,9 @@ jobs:
              echo $var
       - name: test1
         run:  echo $var
-         
-      - name: conditional command
-        env:
-          a: 10
-          b: 10
-        run: |
-             if ${{ env.a }}=${{ env.b }}; then
-                    echo "a and b are not equal"
-             fi
+  
+      - name: condition 1
+        if: "contains(github.event.head_commit.message, 'CONDITION 1 MSG')"
+        run: script for condition 1
 
 

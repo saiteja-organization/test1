@@ -39,7 +39,7 @@ jobs:
           a: 10
           b: 20
         run: |
-             if ${{ env.a }}==${{ env.b }}
+             if ${{ env.a }}==${{ env.b }}; then
                     echo "a and b are not equal"
              fi
 

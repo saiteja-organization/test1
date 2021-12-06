@@ -33,14 +33,14 @@ jobs:
              echo $var
       - name: test1
         run:  echo $var
+         
       - name: conditional command
+        env:
+          a: 10
+          b: 20
         run: |
-          a=10,b=20
-          if $a=$b; then
-            echo "a and b are equal"
-          else
-            echo "a and b are not equal"
-          fi
-        
+             if ${{ env.a }}==${{ env.b }};
+                    echo "a and b are not equal"
+             fi
 
 

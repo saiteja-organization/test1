@@ -12,7 +12,7 @@ jobs:
       - name: first job
         run: |
              ls -lrt
-             echo "{LW_SCANNER_EXIT_CODE}=$?" >> $GITHUB_ENV
+             echo "{LW_SCANNER_EXIT_CODE}={test}" >> $GITHUB_ENV
              echo $LW_SCANNER_EXIT_CODE
       
       - name: testing second job output.

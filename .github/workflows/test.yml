@@ -14,11 +14,11 @@ jobs:
              ls -lrt
              echo "{LW_SCANNER_EXIT_CODE}={test}" >> $GITHUB_ENV
              echo $LW_SCANNER_EXIT_CODE
-      
       - name: testing second job output.
+        env:
+          export FOO: bar
+          FOO: ${{ FOO }}
         run: |
-             export FOO=bar
-             echo $FOO
              echo "::set-env name=FOO::$FOO"
       - name: testing job       
         run: echo $FOO

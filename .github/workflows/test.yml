@@ -16,12 +16,9 @@ jobs:
              echo $LW_SCANNER_EXIT_CODE
       
       - name: testing second job output.
-      #  if: ${CRITICAL_VULNS_FOUND} -ge 1 
-        run:  |
-          a=10
-          b=10
-          if $a=$b; then
-              echo "success"
-          fi
+      - run: |
+             export FOO=bar
+             echo "::set-env name=FOO::$FOO"
+      - run: echo $FOO
               
 

@@ -11,7 +11,7 @@ jobs:
       - uses:  actions/checkout@v2
       - name: first job
         run: |
-             echo "latest_tag=$(cat VERSION)" > $GITHUB_ENV
+             echo "CRITICAL_VULNS_FOUND=2" > $GITHUB_ENV
       - name: testing second job output.
         run: |
              echo $latest_tag

@@ -11,15 +11,10 @@ jobs:
       - uses:  actions/checkout@v2
       - name: first job
         run: |
-             ls -lrt
-             echo "{LW_SCANNER_EXIT_CODE}={test}" >> $GITHUB_ENV
-             echo $LW_SCANNER_EXIT_CODE
+             echo "latest_tag=$(cat VERSION)" > $GITHUB_ENV
       - name: testing second job output.
         run: |
-             export FOO=bar
-             echo $FOO
-             echo "::set-env name=FOO::$FOO"
-      - name: testing job       
-        run: echo $FOO
+             echo $latest_tag
+
               
 

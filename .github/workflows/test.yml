@@ -11,11 +11,13 @@ jobs:
     - uses:  actions/checkout@v2
     - name: first job
       run: |
-           echo "test_value=$(cat VERSION)" > $GITHUB_ENV
-           echo $test_value
+           echo "CRITICAL_VULNS_FOUND=$(cat VERSION)" > $GITHUB_ENV
+           echo $CRITICAL_VULNS_FOUND
     - name: testing second job output.
       run: |
-        if [[ "${test_value}" != 3 ]]; then
+        echo "$CRITICAL_VULNS_FOUND"
+        echo "this is testing"
+        if [[ "${CRITICAL_VULNS_FOUND}" != 3 ]]; then
             pwd
             ls -lrt
             echo "working"

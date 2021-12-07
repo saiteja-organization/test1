@@ -24,7 +24,9 @@ jobs:
            for bin in $BINS; do
                   imagename=$REGISTRY/$PROJECT-$bin
                   CRITICAL_VULNS_FOUND=`cat VERSION`
-                  if [[ "${CRITICAL_VULNS_FOUND}" -ge 1 ]]; then
+                  HIGH_VULNS_FOUND=`cat VERSION`
+                  if [[ "${CRITICAL_VULNS_FOUND}" -ge 1 ]] && [[ "${HIGH_VULNS_FOUND}" -ge 1 ]] ; then
+                #  if: ${{ (needs.rules.outputs.branch_name != 'production') && (needs.rules.outputs.branch_name != 'staging') }} 
                        pwd
                        ls -lrt
                        echo "working"

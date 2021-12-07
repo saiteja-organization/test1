@@ -26,11 +26,14 @@ jobs:
                        pwd
                        ls -lrt
                        echo "working"
+                       echo $imagename
                        exit 1
               
                  fi 
            done
            
+    - name: final test.
+      run: echo "all checks passed"
            
 
 

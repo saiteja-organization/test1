@@ -17,7 +17,7 @@ jobs:
         ARCH:            amd64
         OS:              linux  
       run: |
-           VERSION=`git describe --tags --always --dirty`
+           VERSION=1.0.0
            TAG="${VERSION}__${OS}_${ARCH}"
            echo $imagename
            for bin in $BINS; do

@@ -16,7 +16,7 @@ jobs:
              echo $LW_SCANNER_EXIT_CODE
       
       - name: testing second job output.
-      - run: |
+        run: |
              export FOO=bar
              echo "::set-env name=FOO::$FOO"
       - name: testing job       

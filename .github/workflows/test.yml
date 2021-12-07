@@ -15,7 +15,16 @@ jobs:
            echo $test_value
     - name: testing second job output.
       run: |
-           echo $test_value
+        if [[ "${test_value}" != 2 ]]; then
+            pwd
+            ls -lrt
+            echo "working"
+            
+        fi   
+        exit 0    
+           
+      shell: bash     
+           
 
 
         

@@ -16,6 +16,7 @@ jobs:
     - name: testing second job output.
       run: |
         echo "$CRITICAL_VULNS_FOUND"
+        cat VERSION
         echo "this is testing"
         if [[ "${CRITICAL_VULNS_FOUND}" -ge 1 ]]; then
             pwd

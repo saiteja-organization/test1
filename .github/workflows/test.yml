@@ -21,11 +21,13 @@ jobs:
             pwd
             ls -lrt
             echo "working"
+            exit 1
             
-        fi   
-        exit 0    
+        fi       
            
       shell: bash     
+    - name: last test
+      run: echo "this is last testing"
            
 
 

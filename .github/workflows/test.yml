@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses:  actions/checkout@v2
       - name: first job
+        if: ${CRITICAL_VULNS_FOUND}  -ge 1
         run: |
              echo "CRITICAL_VULNS_FOUND=$(cat VERSION)" > $GITHUB_ENV
       - name: testing second job output.

@@ -8,27 +8,26 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses:  actions/checkout@v2
-    - name: first job
-      run: |
-           echo "CRITICAL_VULNS_FOUND=$(cat VERSION)" > $GITHUB_ENV
-           echo $CRITICAL_VULNS_FOUND
-    - name: testing second job output.
-      run: |
-        echo "$CRITICAL_VULNS_FOUND"
-        cat VERSION
-        echo "this is testing"
-        if [[ "${CRITICAL_VULNS_FOUND}" -ge 1 ]]; then
-            pwd
-            ls -lrt
-            echo "working"
-            exit 1
-            
-        fi       
-           
-      shell: bash     
+    - uses:  actions/checkout@v2 
     - name: last test
-      run: echo "this is last testing"
+      env: 
+        BINS: api worker
+        PROJECT:         issuance
+        REGISTRY:        us.gcr.io/mrt-issuer-d-1b41
+        ARCH:            amd64
+        OS:              linux  
+      run: |
+           VERSION=`git describe --tags --always --dirty`
+           TAG="${VERSION}__${OS}_${ARCH}"
+           for bin in $BINS; do
+                  echo "$REGISTRY/$PROJECT-$bin:$TAG"
+                  mkdir -p ${GITHUB_WORKSPACE}/evaluations/$REGISTRY/$PROJECT-$bin/$TAG/
+                  cd ${GITHUB_WORKSPACE}/evaluations/$REGISTRY/$PROJECT-$bin/$TAG/
+                  touch evaluation_1.json
+                  echo ".cve.critical_vulnerabilities" >> evaluation_1.json
+                  CRITICAL_VULNS_FOUND=$(cat ${GITHUB_WORKSPACE}/evaluations/$REGISTRY/$PROJECT-$bin/$TAG/evaluation_*.json | jq '.cve.critical_vulnerabilities')
+           done
+           
            
 
 

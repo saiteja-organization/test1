@@ -17,5 +17,6 @@ jobs:
       run: |
            echo $CRITICAL_VULNS_FOUND
 
-              
+        
+        
 

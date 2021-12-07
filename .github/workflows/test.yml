@@ -8,12 +8,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - if: $CRITICAL_VULNS_FOUND -ge 1
-      uses:  actions/checkout@v2
+    - uses:  actions/checkout@v2
     - name: first job
       run: |
            echo "CRITICAL_VULNS_FOUND=$(cat VERSION)" > $GITHUB_ENV
-           echo "vulns found"
+           echo $CRITICAL_VULNS_FOUND
     - name: testing second job output.
       run: |
            echo $CRITICAL_VULNS_FOUND

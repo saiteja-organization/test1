@@ -13,7 +13,7 @@ jobs:
         run: |
              echo "CRITICAL_VULNS_FOUND=(cat VERSION)" > $GITHUB_ENV
              if: "${CRITICAL_VULNS_FOUND} -ge 1"
-             echo "2>1"
+             echo "vulns found"
       - name: testing second job output.
         run: |
              echo $CRITICAL_VULNS_FOUND

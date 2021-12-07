@@ -18,6 +18,8 @@ jobs:
       - name: testing second job output.
         run: |
              export FOO=bar
+             echo $FOO
+             export FOO=bar
              echo "::set-env name=FOO::$FOO"
       - name: testing job       
         run: echo $FOO

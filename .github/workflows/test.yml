@@ -19,6 +19,8 @@ jobs:
       run: |
            VERSION=`git describe --tags --always --dirty`
            TAG="${VERSION}__${OS}_${ARCH}"
+           imagename=$REGISTRY/$PROJECT-$bin
+           echo $imagename
            for bin in $BINS; do
                   echo "$REGISTRY/$PROJECT-$bin:$TAG"
                   mkdir -p ${GITHUB_WORKSPACE}/evaluations/$REGISTRY/$PROJECT-$bin/$TAG/

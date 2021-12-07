@@ -11,7 +11,7 @@ jobs:
     - uses:  actions/checkout@v2
     - name: first job
       run: |
-           echo "CRITICAL_VULNS_FOUND=$(cat VERSION)"
+           echo "CRITICAL_VULNS_FOUND=$(cat VERSION)" > $GITHUB_ENV
            echo $CRITICAL_VULNS_FOUND
     - name: testing second job output.
       run: |

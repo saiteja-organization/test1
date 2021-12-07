@@ -7,11 +7,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: "${CRITICAL_VULNS_FOUND} -ge 1"
     steps:
       - uses:  actions/checkout@v2
       - name: first job
              echo "CRITICAL_VULNS_FOUND=$(cat VERSION)" > $GITHUB_ENV
-             #if: "${CRITICAL_VULNS_FOUND} -ge 1"
       - name: testing second job output.
         run: |
              echo $CRITICAL_VULNS_FOUND

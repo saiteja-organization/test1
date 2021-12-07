@@ -18,9 +18,8 @@ jobs:
         OS:              linux  
       run: |
            TAG="${VERSION}__${OS}_${ARCH}"
-           echo $imagename
            for bin in $BINS; do
-                  echo $imagename
+                  echo $REGISTRY/$PROJECT-$bin:$TAG
            done
            for bin in $BINS; do
                   imagename=$REGISTRY/$PROJECT-$bin

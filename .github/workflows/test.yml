@@ -22,7 +22,7 @@ jobs:
            for bin in $BINS; do
                   imagename=$REGISTRY/$PROJECT-$bin
                   CRITICAL_VULNS_FOUND=`cat VERSION`
-                  if [[ "${CRITICAL_VULNS_FOUND}" -ge 0 ]]; then
+                  if [[ "${CRITICAL_VULNS_FOUND}" -ge 1 ]]; then
                        pwd
                        ls -lrt
                        echo "working"

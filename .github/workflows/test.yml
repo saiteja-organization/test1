@@ -8,7 +8,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - if: ${CRITICAL_VULNS_FOUND} -ge 1
+    - if: $CRITICAL_VULNS_FOUND -ge 1
       uses:  actions/checkout@v2
     - name: first job
       run: |

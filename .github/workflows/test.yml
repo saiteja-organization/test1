@@ -26,7 +26,7 @@ jobs:
                   CRITICAL_VULNS_FOUND=`cat VERSION`
                   HIGH_VULNS_FOUND=`cat VERSION1`
                  # if [[ "${CRITICAL_VULNS_FOUND}" -ge 1 ]] && [[ "${HIGH_VULNS_FOUND}" -ge 1 ]] ; then
-                  if [ \( "$CRITICAL_VULNS_FOUND" -ge 1 -a "$HIGH_VULNS_FOUND" -ge "1" \) ]
+                  if [ \( "$CRITICAL_VULNS_FOUND" -ge 1 -o "$HIGH_VULNS_FOUND" -ge "1" \) ]
                   then
                         echo "vulnerabilities found"
                         exit 1

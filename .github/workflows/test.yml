@@ -12,6 +12,7 @@ jobs:
       - name: first job
         run: |
              echo "latest_tag=$(cat VERSION)" > $GITHUB_ENV
+             echo "latest_version=$(latest_tag)" > $GITHUB_ENV
       - name: testing second job output.
         run: |
              echo $latest_tag

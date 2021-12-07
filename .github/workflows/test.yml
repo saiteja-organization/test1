@@ -19,6 +19,7 @@ jobs:
       - run: |
              export FOO=bar
              echo "::set-env name=FOO::$FOO"
-      - run: echo $FOO
+      - name: testing job       
+        run: echo $FOO
               
 

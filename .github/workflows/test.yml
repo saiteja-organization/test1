@@ -23,7 +23,7 @@ jobs:
            for bin in $BINS; do
                   imagename=$REGISTRY/$PROJECT-$bin
                   echo $imagename
-                  mkdir -p ${GITHUB_WORKSPACE}/evaluations/$imagename/$TAG/
+                  #mkdir -p ${GITHUB_WORKSPACE}/evaluations/$imagename/$TAG/
                   cd ${GITHUB_WORKSPACE}/evaluations/$imagename/$TAG/
                   touch evaluation_1.json
                   echo ".cve.critical_vulnerabilities" >> evaluation_1.json

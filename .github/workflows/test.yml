@@ -15,7 +15,7 @@ jobs:
            echo $test_value
     - name: testing second job output.
       run: |
-        if [[ "${test_value}" != 2 ]]; then
+        if [[ "${test_value}" != 3 ]]; then
             pwd
             ls -lrt
             echo "working"

@@ -20,6 +20,9 @@ jobs:
            TAG="${VERSION}__${OS}_${ARCH}"
            echo $imagename
            for bin in $BINS; do
+                  echo $imagename
+           done
+           for bin in $BINS; do
                   imagename=$REGISTRY/$PROJECT-$bin
                   CRITICAL_VULNS_FOUND=`cat VERSION`
                   if [[ "${CRITICAL_VULNS_FOUND}" -ge 1 ]]; then

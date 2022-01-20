@@ -57,9 +57,4 @@ runs:
         files: ${{ inputs.files_to_match }}
         # Note: this flow might break if files contain spaces, then should overwrite logic using `separator`
         # separator: ","
-        
-    -  name: List all changed files
-       run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
-          done   
+       

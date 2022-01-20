@@ -39,7 +39,6 @@ runs:
           ls -lrt $file
         done
         for file in ${{ inputs.files }}; do
-          ls -lrt $file
           tflint $file || exit_code=1
         done
         exit $exit_code

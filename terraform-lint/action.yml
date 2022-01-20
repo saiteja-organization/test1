@@ -35,6 +35,7 @@ runs:
       shell: bash
       run: |
         exit_code=0
+        echo ${{ inputs.files }}
         for file in ${{ inputs.files }}; do
           ls -lrt $file
           tflint $file || exit_code=1

@@ -20,7 +20,7 @@ runs:
     - name: run shellcheck.
       shell: bash
       run: |
-        apt install shellcheck -y
+        sudo apt install shellcheck -y
         exit_code=0
         for file in ${{ inputs.files }}; do
           shellcheck $file || exit_code=1

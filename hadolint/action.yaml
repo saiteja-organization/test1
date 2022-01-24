@@ -20,6 +20,7 @@ runs:
     - name: run hadolint.
       shell: bash
       run: |
+        ls -lrt ${{ inputs.files }}
         sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 && sudo chmod +x /bin/hadolint
         exit_code=0
         for file in ${{ inputs.files }}; do

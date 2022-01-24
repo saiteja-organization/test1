@@ -1,0 +1,28 @@
+name: Check Dockerfile Lint rules.
+description: "Check that Dockerfiles in the PR are respecting hadolint rules"
+
+inputs:
+  config_file_path:
+    description: "Relative path to config file"
+    required: true
+  files:
+    description: "List of file paths to check"
+    required: true
+  os:
+    description: "The OS that's used to run action"
+    default: ubuntu-latest
+    required: false
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: run hadolint.
+      shell: bash
+      run: |
+        sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 && sudo chmod +x /bin/hadolint
+        exit_code=0
+        for file in ${{ inputs.files }}; do
+          hadolint $file || exit_code=1
+        done
+        exit $exit_code

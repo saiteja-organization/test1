@@ -1,0 +1,27 @@
+name: Check Dockerfile Lint rules.
+description: "Check that Dockerfiles in the PR are respecting hadolint rules"
+
+inputs:
+  config_file_path:
+    description: "Relative path to config file"
+    required: true
+  files:
+    description: "List of file paths to check"
+    required: true
+  os:
+    description: "The OS that's used to run action"
+    default: ubuntu-latest
+    required: false
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: 'Yamllint'
+      uses: karancode/yamllint-github-action@master
+      with:
+        yamllint_file_or_dir: ${{ inputs.files }}
+        yamllint_strict: false
+        yamllint_comment: true
+      env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}

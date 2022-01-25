@@ -18,12 +18,6 @@ runs:
   using: "composite"
   steps:
     - name: run hadolint.
-      shell: bash
-      run: |
-        ls -lrt ${{ inputs.files }}
-        sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 && sudo chmod +x /bin/hadolint
-        exit_code=0
-        for file in ${{ inputs.files }}; do
-          hadolint $file || exit_code=1
-        done
-        exit $exit_code
+    - uses: hadolint/hadolint-action@v1.6.0
+      with:
+        dockerfile: ${{ inputs.files }}

@@ -17,7 +17,20 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: run hadolint.
-      uses: hadolint/hadolint-action@v1.6.0
+    - uses: actions/cache@v2
+      name: Cache plugin dir
       with:
-        dockerfile: ${{ inputs.files }}
+        path: ~/.tflint.d/plugins
+        key: ${{ inputs.os }}-tflint-${{ hashFiles(inputs.config_file_path) }}
+    - uses: terraform-linters/setup-tflint@v1
+      name: Setup TFLint
+      with:
+        tflint_version: ${{ inputs.tflint_version }}
+     - name: Show version
+      shell: bash
+      run: |
+        exit_code=0
+        for file in ${{ inputs.files }}; do
+          tflint --config=${{ inputs.config_file_path }} $file || exit_code=1
+        done
+        exit $exit_code

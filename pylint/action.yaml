@@ -18,11 +18,8 @@ runs:
   using: "composite"
   steps:
   - uses: actions/checkout@master
-  - name: Python Linter
-    uses: sunnysid3up/python-linter@master
+  - name: Python Pylint Github Action
+    uses: fylein/python-pylint-github-action@master
     with:
-      source: "${{ inputs.files }}"
-      mypy-options: "--ignore-missing-imports --show-error-codes"
-      pylint-options: "--rcfile=setup.cfg"
-
+        args: pylint ${{ inputs.files }}
 

@@ -17,12 +17,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: run shellcheck.
-      shell: bash
-      run: |
-        sudo apt install shellcheck -y
-        exit_code=0
-        for file in ${{ inputs.files }}; do
-          shellcheck $file || exit_code=1
-        done
-        exit $exit_code
+    - name: Run ShellCheck
+      uses: azohra/shell-linter@latest
+      with:
+          path: "${{ inputs.files }}"

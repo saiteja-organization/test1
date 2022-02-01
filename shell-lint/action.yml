@@ -21,3 +21,4 @@ runs:
       uses: azohra/shell-linter@latest
       with:
           path: "${{ inputs.files }}"
+          status_code: "1"

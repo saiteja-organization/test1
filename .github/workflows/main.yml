@@ -46,7 +46,7 @@ jobs:
       with:
         branch: ${{ github.base_ref || github.ref_name }}
         workflow_id: ${{ inputs.workflow_id }}
-        github_token: ${{ inputs.gh_token }}
+        github_token: ${{ secrets.gh_token }}
 
     - name: Get last common ancestor commit with base branch
       id: common_ancestor_commit

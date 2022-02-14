@@ -12,14 +12,13 @@ on:
          description: "Check for changes using only this list of files or regex (Defaults to the entire repo)"
          required: true
          type: string   
-      github_token:
-         description: "GitHub access token"
-         required: true
-         type: string
       files:
          description: "List of file paths to check"
          required: true
          type: string
+    secrets:
+      github_token:
+         required:  true
     outputs:
       any_changed:
         description: Return true only when any files that match input files_to_match pattern have changed.

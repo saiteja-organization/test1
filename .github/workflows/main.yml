@@ -82,4 +82,4 @@ jobs:
       - name: Python Pylint Github Action
         uses: fylein/python-pylint-github-action@master
         with:
-           args: pylint ${{ inputs.files }}
+           args: pylint ${{ needs.changed_py_files_job.outputs.changed_files }} 

@@ -1,6 +1,9 @@
 name: Reusable workflow
 
 on:
+  pull_request:
+   branches:
+     - main
   workflow_call:
     # Map the workflow outputs to job outputs
     inputs:

@@ -42,7 +42,7 @@ jobs:
           fetch-depth: 0
           
     - name: Fetch branch
-      #if: ${{ github.base_ref }}
+      if: ${{ github.base_ref }}
       shell: bash
       run: |
            git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
@@ -57,7 +57,7 @@ jobs:
 
     - name: Get last common ancestor commit with base branch
       id: common_ancestor_commit
-      #if: ${{ github.base_ref }}
+      if: ${{ github.base_ref }}
       shell: bash
       run: echo "::set-output name=commit_sha::$(git merge-base ${LAST_SUCCESSFUL_COMMIT:-origin/$GITHUB_BASE_BRANCH} $GITHUB_SHA)"
       env:

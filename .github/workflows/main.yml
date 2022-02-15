@@ -25,10 +25,10 @@ on:
     outputs:
       any_changed:
         description: Return true only when any files that match input files_to_match pattern have changed.
-        value: ${{ jobs.changed_tf_files_job.outputs.any_changed }}
+        value: ${{ jobs.changed_py_files_job.outputs.any_changed }}
       changed_files:
         description: List of all copied, modified, and added files that match input files_to_match pattern.
-        value: ${{ jobs.changed_tf_files_job.outputs.changed_files }}
+        value: ${{ jobs.changed_py_files_job.outputs.changed_files }}
 
 jobs:
   changed_py_files_job:

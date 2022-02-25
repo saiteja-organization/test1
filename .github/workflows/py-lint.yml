@@ -52,6 +52,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Checkout actions repo
+        uses: actions/checkout@v2
+        with:
+          repository: saiteja-organization/test1
+          path: test1
+          ref: main
+          token: ${{ secrets.gh_token }}
+          
       - name: Check terraform lint rules
         id: check-py-lint
         uses: ./test1/pylint/

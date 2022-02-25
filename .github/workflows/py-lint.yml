@@ -16,7 +16,9 @@ on:
     secrets:
       gh_token:
          required:  true
-
+      gh_repo_read_token:
+         required: true
+         
 jobs:
   changed_py_files_job:
    runs-on: ubuntu-latest
@@ -35,7 +37,7 @@ jobs:
        repository: saiteja-organization/test1
        path: test1
        ref: feb24-2022
-       token: ${{ secrets.gh_token }}
+       token: ${{ secrets.gh_repo_read_token }}
   
    - name: Get changed tf files
      id: changed-files
@@ -58,7 +60,7 @@ jobs:
           repository: saiteja-organization/test1
           path: test1
           ref: main
-          token: ${{ secrets.gh_token }}
+          token: ${{ secrets.gh_repo_read_token }}
           
       - name: Check terraform lint rules
         id: check-py-lint

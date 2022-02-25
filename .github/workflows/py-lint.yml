@@ -12,51 +12,32 @@ on:
          description: "Check for changes using only this list of files or regex (Defaults to the entire repo)"
          required: true
          type: string   
+         default: ""
     secrets:
       gh_token:
          required:  true
-
+      gh_repo_read_token:
+         required: true
+         
 jobs:
   changed_py_files_job:
-    runs-on: ubuntu-latest
-    outputs:
-      changed_files: ${{ steps.changed-files.outputs.all_changed_files }}
-      any_changed: ${{ steps.changed-files.outputs.any_changed }}
-    steps:
-    - uses: actions/checkout@v2
-      with:
-          fetch-depth: 0
-          
-    - name: Fetch branch
-      if: ${{ github.base_ref }}
-      shell: bash
-      run: |
-           git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
-           echo "${{ github.base_ref }}"
-    - name: Get last successful commit on base branch
-      uses: nrwl/last-successful-commit-action@v1
-      id: last_successful_commit
-      with:
-        branch: ${{ github.base_ref || github.ref_name }}
-        workflow_id: ${{ inputs.workflow_id }}
-        github_token: ${{ secrets.gh_token }}
-
-    - name: Get last common ancestor commit with base branch
-      id: common_ancestor_commit
-      if: ${{ github.base_ref }}
-      shell: bash
-      run: echo "::set-output name=commit_sha::$(git merge-base ${LAST_SUCCESSFUL_COMMIT:-origin/$GITHUB_BASE_BRANCH} $GITHUB_SHA)"
-      env:
-        LAST_SUCCESSFUL_COMMIT: ${{ steps.last_successful_commit.outputs.commit_hash }}
-        GITHUB_BASE_BRANCH: ${{ github.base_ref }}
-
-    - name: Get changed files
-      uses: tj-actions/changed-files@v12
-      id: changed-files
-      with:
-        base_sha: ${{ steps.common_ancestor_commit.outputs.commit_sha || steps.last_successful_commit.outputs.commit_hash }}
-        files: ${{ inputs.files_to_match }}
-
+   runs-on: ubuntu-latest
+   outputs:
+     changed_files: ${{ steps.changed-files.outputs.changed_files }}
+     any_changed: ${{ steps.changed-files.outputs.any_changed }}
+   
+   steps:
+   - uses: actions/checkout@v2
+     with:
+       fetch-depth: 0  
+         
+   - name: Get changed tf files
+     id: changed-files
+     uses: ./test1/changed-files-since-last-success
+     with:
+       files_to_match: ${{ inputs.files_to_match }}
+       github_token: ${{ secrets.gh_token }}
+       workflow_id: ${{ inputs.workflow_id }}    
    
   pylint_job:
     runs-on: ubuntu-latest
@@ -64,14 +45,10 @@ jobs:
     if: needs.changed_py_files_job.outputs.any_changed == 'true'
     steps:
       - uses: actions/checkout@v2
-
-      - name: Python Pylint Github Action
-        uses: fylein/python-pylint-github-action@master
+          
+      - name: Check terraform lint rules
+        id: check-py-lint
+        uses: ./test1/pylint/
         with:
-           args: pylint ${{ needs.changed_py_files_job.outputs.changed_files }}
-      - name: testing
-        if: always()
-        run: |
-             echo ${{ needs.changed_py_files_job.outputs.changed_files }}
-             echo ${{ needs.changed_py_files_job.outputs.any_changed }}
+          files: ${{ needs.changed_py_files_job.outputs.changed_files }} 
       

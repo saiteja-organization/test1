@@ -30,15 +30,7 @@ jobs:
    - uses: actions/checkout@v2
      with:
        fetch-depth: 0  
-       
-   - name: Checkout actions repo
-     uses: actions/checkout@v2
-     with:
-       repository: saiteja-organization/test1
-       path: test1
-       ref: feb24-2022
-       token: ${{ secrets.gh_repo_read_token }}
-  
+         
    - name: Get changed tf files
      id: changed-files
      uses: ./test1/changed-files-since-last-success
@@ -53,14 +45,6 @@ jobs:
     if: needs.changed_py_files_job.outputs.any_changed == 'true'
     steps:
       - uses: actions/checkout@v2
-
-      - name: Checkout actions repo
-        uses: actions/checkout@v2
-        with:
-          repository: saiteja-organization/test1
-          path: test1
-          ref: main
-          token: ${{ secrets.gh_repo_read_token }}
           
       - name: Check terraform lint rules
         id: check-py-lint

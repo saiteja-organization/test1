@@ -30,7 +30,10 @@ jobs:
    - uses: actions/checkout@v2
      with:
        fetch-depth: 0  
-         
+   - name: testing
+     run: |
+          pwd
+          ls -lrt
    - name: Get changed tf files
      id: changed-files
      uses: ./test1/changed-files-since-last-success

@@ -52,13 +52,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Python Pylint Github Action
-        uses: fylein/python-pylint-github-action@master
+      - name: Check terraform lint rules
+        id: check-py-lint
+        uses: ./test1/pylint/
         with:
-           args: pylint ${{ needs.changed_py_files_job.outputs.changed_files }}
-      - name: testing
-        if: always()
-        run: |
-             echo ${{ needs.changed_py_files_job.outputs.changed_files }}
-             echo ${{ needs.changed_py_files_job.outputs.any_changed }}
+          files: ${{ needs.changed_py_files_job.outputs.changed_files }} 
       

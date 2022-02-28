@@ -30,13 +30,16 @@ jobs:
    - uses: actions/checkout@v2
      with:
        fetch-depth: 0  
-   - name: testing
-     run: |
-          pwd
-          ls -lrt
+   - name: Checkout actions repo
+     uses: actions/checkout@v2
+     with:
+       repository: saiteja-organization/test1
+       path: test1
+       ref: saiteja
+       token: ${{ secrets.gh_token }}
    - name: Get changed tf files
      id: changed-files
-     uses: ./test1/changed-files-since-last-success
+     uses: ./test1/.github/actions/changed-files-since-last-success
      with:
        files_to_match: ${{ inputs.files_to_match }}
        github_token: ${{ secrets.gh_token }}
@@ -48,10 +51,16 @@ jobs:
     if: needs.changed_py_files_job.outputs.any_changed == 'true'
     steps:
       - uses: actions/checkout@v2
-          
+      - name: Checkout actions repo
+        uses: actions/checkout@v2
+        with:
+          repository: saiteja-organization/test1
+          path: test1
+          ref: saiteja
+          token: ${{ secrets.gh_token }}
       - name: Check terraform lint rules
         id: check-py-lint
-        uses: ./test1/pylint/
+        uses: ./test1/.github/actions/pylint
         with:
           files: ${{ needs.changed_py_files_job.outputs.changed_files }} 
       

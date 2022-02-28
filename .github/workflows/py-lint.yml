@@ -12,7 +12,7 @@ on:
          description: "Check for changes using only this list of files or regex (Defaults to the entire repo)"
          required: true
          type: string   
-         default: ""
+         default: \.(py|pyc)$
     secrets:
       gh_token:
          required:  true

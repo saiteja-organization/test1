@@ -15,7 +15,7 @@ on:
          default: \.(yaml|yml)$
       config_file: 
          description: "Custom configuration rules file"
-         required: true
+         required: false
          type: string
          default: scripts/yamllint-config
     secrets:

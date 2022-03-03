@@ -25,6 +25,6 @@ runs:
          sudo apt install yamllint -y
          exit_code=0
          for file in ${{ inputs.files }}; do
-              yamllint -c ${{ inputs.config_file_path }} ${{ $files }} || exit_code=1
+              yamllint -c ${{ inputs.config_file_path }} $file || exit_code=1
          done
          exit $exit_code

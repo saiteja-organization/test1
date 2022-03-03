@@ -13,6 +13,10 @@ on:
          required: true
          type: string   
          default: \.(yaml|yml)$
+      config_file: 
+         description: "Custom configuration rules file"
+         required: true
+         type: string
     secrets:
       gh_token:
          required:  true
@@ -62,5 +66,7 @@ jobs:
         id: check-py-lint
         uses: ./test1/.github/actions/yamllint
         with:
+          config_file_path: ${{ inputs.config_file }}
           files: ${{ needs.changed_yamlfiles_job.outputs.changed_files }} 
+
       

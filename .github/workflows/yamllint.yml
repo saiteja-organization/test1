@@ -17,7 +17,6 @@ on:
          description: "Custom configuration rules file"
          required: false
          type: string
-         default: scripts/yamllint-config
     secrets:
       gh_token:
          required:  true

@@ -23,9 +23,8 @@ runs:
          ls -lart
          pwd
          sudo apt install yamllint -y
-         exitcode=0
-         for file in ${{ needs.changed_sh_files_job.outputs.changed_files }}; do
-              yamllint -c ${{ inputs.config_file_path }} ${{ $files }} || exitcode=1
+         exit_code=0
+         for file in ${{ inputs.files }}; do
+              yamllint -c ${{ inputs.config_file_path }} ${{ $files }} || exit_code=1
          done
          exit $exit_code
-         

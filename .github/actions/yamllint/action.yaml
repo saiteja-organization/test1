@@ -18,13 +18,9 @@ runs:
   using: "composite"
   steps:
     - name: 'Yamllint'
-      shell: bash
-      run: |
-         ls -lart
-         pwd
-         sudo apt install yamllint -y
-         exit_code=0
-         for file in ${{ inputs.files }}; do
-              yamllint -c ${{ inputs.config_file_path }} $file || exit_code=1
-         done
-         exit $exit_code
+      uses: karancode/yamllint-github-action@master
+      with:
+        yamllint_file_or_dir: ${{ inputs.files }}
+        yamllint_strict: false
+        yamllint_comment: true
+        yamllint_config_filepath: ${{ inputs.config_file_path }}

@@ -18,10 +18,13 @@ runs:
   using: "composite"
   steps:
     - name: 'Yamllint'
-      run: |   
+      run: |
+         ls -lart
+         pwd
          sudo apt install yamllint -y
          exitcode=0
          for file in ${{ needs.changed_sh_files_job.outputs.changed_files }}; do
               yamllint -c ${{ inputs.config_file_path }} ${{ $files }} || exitcode=1
          done
          exit $exit_code
+         

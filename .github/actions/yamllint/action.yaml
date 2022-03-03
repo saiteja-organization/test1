@@ -23,4 +23,4 @@ runs:
         yamllint_file_or_dir: ${{ inputs.files }}
         yamllint_strict: false
         yamllint_comment: true
-        yamllint_config_filepath: ${{ inputs.config_file_path }}
+        yamllint_config_filepath: test1/scripts/yamllint-config

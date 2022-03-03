@@ -40,7 +40,7 @@ jobs:
      with:
        repository: saiteja-organization/test1
        path: test1
-       ref: saiteja
+       ref: main
        token: ${{ secrets.gh_token }}
    - name: Get changed tf files
      id: changed-files
@@ -61,7 +61,7 @@ jobs:
         with:
           repository: saiteja-organization/test1
           path: test1
-          ref: saiteja
+          ref: main
           token: ${{ secrets.gh_token }}
       - name: Check yaml lint rules
         id: check-py-lint

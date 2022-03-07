@@ -10,6 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: 'Yamllint'
+      shell: bash
       run: |
         sudo apt install yamllint -y
         exit_code=0

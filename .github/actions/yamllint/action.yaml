@@ -7,7 +7,7 @@ inputs:
     required: true
   config_file:
     description: "Custom rule for yamllint"
-     requried: true
+    requried: true
      
 runs:
   using: "composite"

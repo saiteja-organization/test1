@@ -33,9 +33,11 @@ runs:
       run: |
            pwd
            ls -lrt
-           npx audit-ci --config ${{ inputs.frontend_config_file }}
+           echo ${{ inputs.frontend_wd }}
+           echo ${{ inputs.backend_wd }}
+           npx ${{ inputs.frontend_wd }}/audit-ci --config ${{ inputs.frontend_config_file }}
       
     - name: Check Javascript Vulnerabilities.
       shell: bash
       working-directory: ${{ inputs.backend_wd }}
-      run: npx audit-ci --config ${{ inputs.backend_config_file }}
+      run: npx ${{ inputs.backend_wd }}/audit-ci --config ${{ inputs.backend_config_file }}

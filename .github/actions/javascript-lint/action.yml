@@ -27,7 +27,8 @@ runs:
            pwd
            ls -lrt
            ls -lrt ${{ inputs.frontend_config_file }}
-           npx audit-ci --config ${{ inputs.frontend_config_file }}
+           npx audit-ci --config ${{ inputs.frontend_config_file }} >> test.log
+           cat test.log
       
     - name: Check Javascript Vulnerabilities.
       shell: bash

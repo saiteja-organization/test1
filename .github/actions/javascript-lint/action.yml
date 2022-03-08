@@ -30,7 +30,10 @@ runs:
     - name: Check Javascript Vulnerabilities.
       shell: bash
       working-directory: ${{ inputs.frontend_wd }}
-      run: npx audit-ci --config ${{ inputs.frontend_config_file }}
+      run: |
+           pwd
+           ls -lrt
+           npx audit-ci --config ${{ inputs.frontend_config_file }}
       
     - name: Check Javascript Vulnerabilities.
       shell: bash

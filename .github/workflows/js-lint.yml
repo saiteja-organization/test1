@@ -12,14 +12,6 @@ on:
          required: true
          type: string
          default: (^|\/)yarn\.lock$
-      frontend_wd:
-         required: true
-         type: string
-         description: "ID or filename of the workflow to get latest successful commit"
-      backend_wd:
-         required: false
-         type: string
-         description: "ID or filename of the workflow to get latest successful commit"
       frontend_config_file:
          required: true
          type: string
@@ -84,7 +76,6 @@ jobs:
         id: check-javascript-lint1
         uses: ./test1/.github/actions/javascript-lint
         with:
-          working_directory: ${{ inputs.frontend_wd }}
           github_token: ${{ secrets.gh_token }}
           config_file: ${{ inputs.frontend_config_file }}
           
@@ -93,6 +84,5 @@ jobs:
         id: check-javascript-lint2
         uses: ./test1/.github/actions/javascript-lint
         with:
-          working_directory: ${{ inputs.backend_wd }}
           github_token: ${{ secrets.gh_token }}
           config_file: ${{ inputs.backend_config_file }}

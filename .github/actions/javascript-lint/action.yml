@@ -31,4 +31,4 @@ runs:
       shell: bash
       run: |
            pwd
-           cd ${{ inputs.frontend_wd }};npx audit-ci --config ${{ inputs.frontend_config_file }}
+           cd ${{ inputs.frontend_wd }};ls -lrt;npx audit-ci --config ${{ inputs.frontend_config_file }}

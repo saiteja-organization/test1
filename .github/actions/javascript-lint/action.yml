@@ -31,4 +31,4 @@ runs:
       shell: bash
       run: |
            pwd
-           npx audit-ci --directory=${{ inputs.frontend_wd }} --config ${{ inputs.frontend_wd }}/${{ inputs.frontend_config_file }}
+           cd ${{ inputs.frontend_wd }};npx audit-ci --config ${{ inputs.frontend_config_file }}

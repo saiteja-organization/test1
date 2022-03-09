@@ -33,6 +33,6 @@ runs:
       run: |
         pwd
         ls -lrt
-        npx audit-c
+        npx audit-ci
    
            

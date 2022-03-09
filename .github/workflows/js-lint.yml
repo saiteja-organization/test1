@@ -12,10 +12,6 @@ on:
          required: true
          type: string
          default: (^|\/)yarn\.lock$
-      frontend_config_file:
-         required: true
-         type: string
-         description: "ID or filename of the workflow to get latest successful commit"
       frontend_wd: 
          required: true
          type: string
@@ -76,7 +72,6 @@ jobs:
         id: check-javascript-lint1
         uses: ./test1/.github/actions/javascript-lint
         with:
-          frontend_config_file: ${{ inputs.frontend_config_file }}
           frontend_wd: ${{ inputs.frontend_wd }}
         
   

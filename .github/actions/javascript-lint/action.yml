@@ -2,6 +2,12 @@ name: Check Javascript Vulnerabilities.
 description: "Check javascript vulnerabilities to the PR"
 
 inputs:
+  frontend_wd: 
+    description: "A working directory passed from the caller workflow"
+    required: true
+  backend_wd: 
+    description: "A working directory passed from the caller workflow"
+    required: false
   frontend_config_file:
     description: "A working directory passed from the caller workflow"
     required: true
@@ -23,7 +29,7 @@ runs:
 
     - name: Check Javascript Vulnerabilities.
       shell: bash
-      working-directory: ${{ inputs.frontend_config_file }}
+      working-directory: ${{ inputs.frontend_wd }}
       run: |
            ls -lrt ${{ inputs.frontend_config_file }}
            npx audit-ci --config="${{ inputs.frontend_config_file }}"
@@ -31,7 +37,7 @@ runs:
       
     - name: Check Javascript Vulnerabilities.
       shell: bash
-      working-directory: ${{ inputs.backend_config_file }}
+      working-directory: ${{ inputs.backend_wd }}
       run: |
            ls -lrt ${{ inputs.backend_config_file }}
            npx audit-ci --config="${{ inputs.backend_config_file }}"

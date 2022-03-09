@@ -32,4 +32,5 @@ runs:
       run: |
            pwd
            npx audit-ci --help
-           cd ${{ inputs.frontend_wd }};ls -lrt;npx audit-ci --config ${{ inputs.frontend_config_file }}
+           cd ${{ inputs.frontend_wd }};ls -lrt;nohup npx audit-ci --config ${{ inputs.frontend_config_file }} &
+           cat nohup

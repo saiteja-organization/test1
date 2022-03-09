@@ -31,5 +31,7 @@ runs:
       shell: bash
       working-directory: ${{ inputs.frontend_wd }}
       run: |
+           pwd
+           ls -lrt
            npx audit-ci --config ${{ inputs.frontend_config_file }}
            

@@ -76,13 +76,12 @@ jobs:
         id: check-javascript-lint1
         uses: ./test1/.github/actions/javascript-lint
         with:
-          github_token: ${{ secrets.gh_token }}
-          config_file: ${{ inputs.frontend_config_file }}
+          frontend_config_file: ${{ inputs.frontend_config_file }}
+
           
       - name: Get changed tf file for frontend
         if: always()
         id: check-javascript-lint2
         uses: ./test1/.github/actions/javascript-lint
         with:
-          github_token: ${{ secrets.gh_token }}
-          config_file: ${{ inputs.backend_config_file }}
+          backend_config_file:  ${{ inputs.backend_config_file }}

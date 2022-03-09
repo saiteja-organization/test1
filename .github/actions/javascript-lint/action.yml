@@ -24,9 +24,12 @@ runs:
     - name: Check Javascript Vulnerabilities.
       shell: bash
       run: |
+           ls -lrt ${{ inputs.frontend_config_file }}
            npx audit-ci --config ${{ inputs.frontend_config_file }}
       
       
     - name: Check Javascript Vulnerabilities.
       shell: bash
-      run: npx audit-ci --config ${{ inputs.backend_config_file }}
+      run: |
+           ls -lrt ${{ inputs.backend_config_file }}
+           npx audit-ci --config ${{ inputs.backend_config_file }}

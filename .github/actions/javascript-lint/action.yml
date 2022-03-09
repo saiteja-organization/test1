@@ -33,6 +33,6 @@ runs:
       run: |
            pwd
            ls -lrt
-           npx audit-ci --moderate
+           npx audit-ci --moderat
            npx audit-ci --config="${{ inputs.frontend_config_file }}"
            

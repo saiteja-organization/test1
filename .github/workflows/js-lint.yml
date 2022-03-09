@@ -16,19 +16,10 @@ on:
          required: true
          type: string
          description: "ID or filename of the workflow to get latest successful commit"
-      backend_config_file:
-         required: false
-         type: string
-         description: "ID or filename of the workflow to get latest successful commit"
       frontend_wd: 
          required: true
          type: string
-         description: "A working directory passed from the caller workflow"
-      backend_wd: 
-         required: false
-         type: string
-         description: "A working directory passed from the caller workflow"
-       
+         description: "A working directory passed from the caller workflow"       
     secrets:
       gh_token:
          required:  true

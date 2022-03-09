@@ -26,7 +26,7 @@ runs:
         node-version: ${{ inputs.node_version }}
 
     - name: Check javascript Vulnerabilities
-      working-directory: ${{ inputs.working_directory }}
+      working-directory: ${{ inputs.frontend_wd }}
       shell: bash
       run: npx audit-ci --config ${{ inputs.config_file }}
            

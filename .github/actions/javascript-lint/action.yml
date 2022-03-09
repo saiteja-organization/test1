@@ -8,11 +8,9 @@ inputs:
   backend_wd: 
     description: "A working directory passed from the caller workflow"
     required: false
-  frontend_config_file:
-    description: "A working directory passed from the caller workflow"
-    required: true
-  backend_config_file:
-    description: "A working directory passed from the caller workflow"
+  config_file:
+    description: "Name of the config file"
+    default: audit-ci.json
     required: false
   node_version:
     description: "The version of nodejs to use, defaults to `14`."
@@ -27,13 +25,8 @@ runs:
       with:
         node-version: ${{ inputs.node_version }}
 
-    - name: Check Javascript Vulnerabilities.
+    - name: Check javascript Vulnerabilities
+      working-directory: ${{ inputs.working_directory }}
       shell: bash
-      working-directory: ${{ inputs.frontend_wd }}
-      run: |
-        pwd
-        ls -lrt
-        npx audit-ci --config=${{ inputs.frontend_config_file }}|| exit_code=1
-        exit $exit_code
-
+      run: npx audit-ci --config ${{ inputs.config_file }}
            

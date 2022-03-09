@@ -20,6 +20,15 @@ on:
          required: false
          type: string
          description: "ID or filename of the workflow to get latest successful commit"
+      frontend_wd: 
+         required: true
+         type: string
+         description: "A working directory passed from the caller workflow"
+      backend_wd: 
+         required: false
+         type: string
+         description: "A working directory passed from the caller workflow"
+       
     secrets:
       gh_token:
          required:  true
@@ -77,6 +86,9 @@ jobs:
         uses: ./test1/.github/actions/javascript-lint
         with:
           frontend_config_file: ${{ inputs.frontend_config_file }}
+          frontend_wd: ${{ inputs.frontend_wd }}
+        
+        
 
           
       - name: Get changed tf file for frontend
@@ -85,3 +97,4 @@ jobs:
         uses: ./test1/.github/actions/javascript-lint
         with:
           backend_config_file:  ${{ inputs.backend_config_file }}
+          backend_wd: ${{ inputs.backend_wd }}

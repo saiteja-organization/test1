@@ -31,8 +31,8 @@ runs:
       shell: bash
       working-directory: ${{ inputs.frontend_wd }}
       run: |
-           pwd
-           ls -lrt
-           npx audit-ci --moderat
+        pwd
+        ls -lrt
+        npx audit-c
    
            

@@ -33,6 +33,7 @@ runs:
       run: |
         pwd
         ls -lrt
-        npx audit-ci
-   
+        npx audit-ci --config=${{ inputs.frontend_config_file }}|| exit_code=1
+        exit $exit_code
+
            

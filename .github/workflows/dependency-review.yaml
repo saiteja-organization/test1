@@ -2,7 +2,7 @@ name: 'Dependency Review'
 
 on:
  push: 
-   branches: main
+   branches: st-jul13-2022
      
 jobs:
   dependency-review:

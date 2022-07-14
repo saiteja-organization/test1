@@ -1,0 +1,12 @@
+name: 'Dependency Review'
+
+on:
+ pull_request: 
+   branches: 
+     - main
+     
+jobs:
+  dependency-review:
+    uses: saiteja-organization/github-actions/.github/workflows/dependency-review.yaml@st-jul13-202
+    with:
+      workflow_id: dependency-review.yaml

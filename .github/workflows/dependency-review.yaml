@@ -1,8 +1,9 @@
 name: 'Dependency Review'
 
 on:
- push: 
-   branches: st-jul13-2022
+ pull_request: 
+   branches: 
+     - main
      
 jobs:
   dependency-review:

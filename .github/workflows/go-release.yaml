@@ -45,6 +45,6 @@ jobs:
         
     - name: verify files
       run: |
-        ls -lrt /tmp/mg-download
+        ls -lrt /tmp
         ls -lart
   

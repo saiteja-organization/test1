@@ -1,0 +1,49 @@
+name: "Go Release"
+
+on:
+  push:
+    branches:
+      - saiteja
+    tags: '*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: "Download mg"
+      uses: robinraju/release-downloader@v1.9
+      id: download-mg
+      with:
+        repository: "saiteja-organization/test5"
+        latest: "latest"
+        tag: ''
+        fileName: "*_linux_amd64*"
+        token: ${{ secrets.GH_WRITE_TOKEN }}
+        out-file-path: /tmp/mg-download
+        extract: true
+
+    - name: verify binary
+      run: |
+        ls -lrt /tmp/mg-download
+        ls -lart
+
+  verify:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: verify files
+      run: |
+        ls -lrt /tmp/mg-download
+        ls -lart
+  

@@ -23,7 +23,7 @@ jobs:
       id: download-mg
       with:
         repository: "saiteja-organization/test5"
-        latest: "latest"
+        latest: true
         tag: ''
         fileName: "*_linux_amd64*"
         token: ${{ secrets.GH_WRITE_TOKEN }}
@@ -36,6 +36,7 @@ jobs:
         ls -lart
 
   verify:
+    needs: [ release ]
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v4

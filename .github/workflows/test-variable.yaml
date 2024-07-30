@@ -15,7 +15,7 @@ jobs:
         
       - name: "Terraform apply"
         run: |
-          echo "${GITHUB_SERVER_URL}"
+          echo "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
     #      echo "${GITHUB_REPOSITORY}" >> test.txt
     #      echo "${GITHUB_ACTION_REPOSITORY}" >> test1.txt
       #    cat test.txt

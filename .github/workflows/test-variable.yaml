@@ -1,0 +1,20 @@
+name: 'test gh action variable'
+
+on:
+ push: 
+   branches: 
+     - main
+     
+jobs:
+  dependency-review:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        id: checkout
+        
+      - name: "Terraform apply"
+        run: |
+          echo "${GITHUB_SERVER_URL}"
+          echo "${GITHUB_REPOSITORY}"
+          echo "${GITHUB_ACTION_REPOSITORY}"

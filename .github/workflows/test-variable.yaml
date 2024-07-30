@@ -17,5 +17,6 @@ jobs:
         run: |
           echo "${GITHUB_SERVER_URL}" >> test.txt
           echo "${GITHUB_REPOSITORY}" >> test.txt
-          echo "${GITHUB_ACTION_REPOSITORY}" >> test.txt
+          echo "${GITHUB_ACTION_REPOSITORY}" >> test1.txt
           cat test.txt
+          cat test1.txt

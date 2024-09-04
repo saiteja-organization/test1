@@ -36,13 +36,13 @@ jobs:
        repository: saiteja-organization/test1
        path: test1
        ref: saiteja
-       token: ${{ secrets.gh_token }}
+       token: ${{ secrets.GH_WRITE_TOKEN }}
    - name: Get changed tf files
      id: changed-files
      uses: ./test1/.github/actions/changed-files-since-last-success
      with:
        files_to_match: ${{ inputs.files_to_match }}
-       github_token: ${{ secrets.gh_token }}
+       github_token: ${{ secrets.GH_WRITE_TOKEN }}
        workflow_id: ${{ inputs.workflow_id }}    
    
   pylint_job:
@@ -57,7 +57,7 @@ jobs:
           repository: saiteja-organization/test1
           path: test1
           ref: saiteja
-          token: ${{ secrets.gh_token }}
+          token: ${{ secrets.GH_WRITE_TOKEN }}
       - name: Check terraform lint rules
         id: check-py-lint
         uses: ./test1/.github/actions/pylint

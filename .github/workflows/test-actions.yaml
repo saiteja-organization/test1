@@ -1,0 +1,29 @@
+name: "test different actions"
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check release creation
+        run: |
+          echo "hello" >> saiteja-test-fileee
+          git config --global user.email "steju480@gmail.com"
+          git config --global user.name "Saiteju1997"
+          git add saiteja-test-fileee
+          git commit -m "test commit"
+          git push origin main
+ 
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v6
+      #   with:
+      #     commit-message: "chore: update hydrated manifests"
+      #     title: Update hydrated manifests
+      #     branch: saiteja
+      #     token: ${{ secrets.GH_WRITE_TOKEN }}

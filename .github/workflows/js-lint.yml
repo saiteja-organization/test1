@@ -16,19 +16,10 @@ on:
          required: true
          type: string
          description: "ID or filename of the workflow to get latest successful commit"
-      backend_config_file:
-         required: false
-         type: string
-         description: "ID or filename of the workflow to get latest successful commit"
       frontend_wd: 
          required: true
          type: string
-         description: "A working directory passed from the caller workflow"
-      backend_wd: 
-         required: false
-         type: string
-         description: "A working directory passed from the caller workflow"
-       
+         description: "A working directory passed from the caller workflow"       
     secrets:
       gh_token:
          required:  true
@@ -54,7 +45,7 @@ jobs:
         with:
           repository: saiteja-organization/test1
           path: test1
-          ref: main
+          ref: tirumala
           token: ${{ secrets.gh_token }}
 
       - name: Get changed tf files
@@ -77,7 +68,7 @@ jobs:
         with:
           repository: saiteja-organization/test1
           path: test1
-          ref: main
+          ref: tirumala
           token: ${{ secrets.gh_token }}       
 
       - name: Get changed tf file for frontend
@@ -88,13 +79,4 @@ jobs:
           frontend_config_file: ${{ inputs.frontend_config_file }}
           frontend_wd: ${{ inputs.frontend_wd }}
         
-        
-
-          
-      - name: Get changed tf file for frontend
-        if: always()
-        id: check-javascript-lint2
-        uses: ./test1/.github/actions/javascript-lint
-        with:
-          backend_config_file:  ${{ inputs.backend_config_file }}
-          backend_wd: ${{ inputs.backend_wd }}
+  
